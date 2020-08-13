@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Protein Calculator - Plant-Based Buds</title>
+{% endblock %}
+
+{% block body %}
+    <h1>Daily Protein Calculator</h1>
+    <form action="/protein_calculator", method="POST">
+        <label for="weight">- Weight -</label>
+        <div align="center" style="display: flex; flex-direction: row; justify-content: center;">
+            <input type="text" id="weight" name="weight" maxlength="3" class="weight_box">
+            <label for="units"></label>
+            <select name="units" id="units">
+                <option value="lbs">lbs</option>
+                <option value="kgs">kgs</option>
+            </select>
+        </div>
+        <br>
+        <div align="center">
+            <label for="level">- Activity Level -</label>
+            <select name="level" id="level">
+                <option value="normal">Normal</option>
+                <option value="endurance">Endurance Athlete</option>
+                <option value="strength">Strength Athlete</option>
+            </select>
+        </div>
+        <br><br>
+        <div align="center">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+{% endblock %}

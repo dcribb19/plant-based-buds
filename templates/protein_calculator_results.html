@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Protein Calculator - Plant-Based Buds</title>
+{% endblock %}
+
+{% block body %}
+    <h1>Recommendation</h1>
+    <p>
+        Your recommended daily protein intake is {{protein}}g of protein.
+    </p>
+    <div align="center">
+        <form>
+            <input type="submit" value="Start Over" id="start_over">
+        </form>
+    </div>
+
+    <footer>
+        Recommendations are based off of figures from <a href="https://bookpubco.com/content/becoming-vegan-express-edition">Becoming Vegan, Express Edition</a>.
+    </footer>
+{% endblock %}

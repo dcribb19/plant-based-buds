@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Plant-Based Buds</title>
+{% endblock %}
+
+{% block body %}
+    <h1>Plant-Based Buds</h1>
+    <h2 align="center">Providing a friendly space to share information on plant-based food options since 2017.</h2>
+    <br>    
+    <form action="/" method="POST">
+        <div align="center">        
+            <input type="submit" name="selector" value="Nutrient Selector" id="selector">
+            <input type="submit" name="calculator" value="Protein Calculator" id="calculator">
+        </div>
+    </form>
+{% endblock %}

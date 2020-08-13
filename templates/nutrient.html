@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    {% if view == 2 %}
+        <title>Nutrient Selector - Vitamin {{ nutrient }}</title>
+    {% else %}
+        <title>Nutrient Selector - {{ nutrient }}</title>
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% if view == 1 %}
+        {% if nutrient == 'carbs' %}
+            {% set nutrient = 'Carbohydrates' %}
+        {% endif %}
+        {% if nutrient == 'omega_3' %}
+            {% set nutrient = 'Omega-3' %}
+        {% endif %}
+    <h1>{{ nutrient }}</h1>
+    <p style="font-size: 130%;">{{ notes[nutrient] }}</p>
+    <div class="table-responsive">
+        <table class="table table-striped table-dark table-sm">
+            <thead>
+                <th>Food</th>
+                {% for item in headers %}
+                    {% if nutrient == 'Carbohydrates' %}
+                        {% set nutrient = 'Carbs' %}
+                    {% endif %}
+                    {% if nutrient in item %}
+                        <th class="text-center bg-success" scope="col">{{ item }}</th>
+                    {% else %}
+                        <th class="text-center" scope="col">{{ item }}</th>
+                    {% endif %}
+                {% endfor %}
+            </thead>
+    
+            <tbody>
+                {% for food in foods %}
+                    <tr>
+                        <td style="font-weight:bold; width: 20%">{{ food.name }}</td>
+                        <td class="text-center">{{ food.calories }}</td>
+                        <td class="text-center">{{ food.protein }}</td>
+                        <td class="text-center">{{ food.fat }}</td>
+                        <td class="text-center">{{ food.carbs }}</td>
+                        <td class="text-center">{{ food.fiber }}</td>
+                        <td class="text-center">{{ food.cholesterol }}</td>
+                        <td class="text-center">{{ food.sodium }}</td>
+                        <td class="text-center">{{ food.sugar }}</td>
+                        <td class="text-center">{{ food.calcium }}</td>
+                        <td class="text-center">{{ food.iron }}</td>
+                        <td class="text-center">{{ food.potassium }}</td>
+                        <td class="text-center">{{ food.c }}</td>
+                        <td class="text-center">{{ food.omega_3 }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+    
+    {% if view == 2 %}
+    <h1>Vitamin {{ nutrient }}</h1>
+    <p style="font-size: 130%;">{{ notes[nutrient] }}</p>
+    <div class="table-responsive">
+        <table class="table table-striped table-dark table-sm">
+            <thead>
+                <th>Food</th>
+                <th class="text-center" scope="col">Calories</th>
+                <th class="text-center" scope="col">Protein (g)</th>
+                <th class="text-center" scope="col">Fat (g)</th>
+                <th class="text-center" scope="col">Carbs (g)</th>
+                <th class="text-center" scope="col">Fiber (g)</th>
+                <th class="text-center" scope="col">Sodium (mg)</th>
+                <th class="text-center" scope="col">Sugar (g)</th>
+                {% if nutrient == 'B1' %}
+                    <th class="text-center" scope="col">{{ headers[0] }}</th>
+                    <th class="text-center bg-success" scope="col">{{ headers[1] }}</th>
+                    {% for item in headers[2:] %}
+                        <th class="text-center" scope="col">{{ item }}</th>
+                    {% endfor %}
+                {% else %}
+                    {% for item in headers %}
+                        {% if nutrient in item %}
+                            <th class="text-center bg-success" scope="col">{{ item }}</th>
+                        {% else %}
+                            <th class="text-center" scope="col">{{ item }}</th>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </thead>
+
+            <tbody>
+                {% for food in foods %}
+                    <tr>
+                        <td style="font-weight:bold; width: 21%">{{ food.name }}</td>
+                        <td class="text-center">{{ food.calories }}</td>
+                        <td class="text-center">{{ food.protein }}</td>
+                        <td class="text-center">{{ food.fat }}</td>
+                        <td class="text-center">{{ food.carbs }}</td>
+                        <td class="text-center">{{ food.fiber }}</td>
+                        <td class="text-center">{{ food.sodium }}</td>
+                        <td class="text-center">{{ food.sugar }}</td>
+                        <td class="text-center">{{ food.a }}</td>
+                        <td class="text-center">{{ food.b1 }}</td>
+                        <td class="text-center">{{ food.b2 }}</td>
+                        <td class="text-center">{{ food.b3 }}</td>
+                        <td class="text-center">{{ food.b5 }}</td>
+                        <td class="text-center">{{ food.b6 }}</td>
+                        <td class="text-center">{{ food.b9 }}</td>
+                        <td class="text-center">{{ food.b12 }}</td>
+                        <td class="text-center">{{ food.c }}</td>
+                        <td class="text-center">{{ food.d }}</td>
+                        <td class="text-center">{{ food.e }}</td>
+                        <td class="text-center">{{ food.k }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+    {% if view == 3 %}
+    <h1>{{ nutrient }}</h1>
+    <p style="font-size: 130%;">{{ notes[nutrient] }}</p>
+    <div class="table-responsive">
+        <table class="table table-striped table-dark table-sm">
+            <thead>
+                <th>Food</th>
+                <th class="text-center" scope="col">Calories</th>
+                <th class="text-center" scope="col">Protein (g)</th>
+                <th class="text-center" scope="col">Fat (g)</th>
+                <th class="text-center" scope="col">Carbs (g)</th>
+            {% for item in headers %}
+                {% if nutrient in item %}
+                    <th class="text-center bg-success" scope="col">{{ item }}</th>
+                {% else %}
+                    <th class="text-center" scope="col">{{ item }}</th>
+                {% endif %}
+            {% endfor %}
+            </thead>
+
+            <tbody>
+                {% for food in foods %}
+                    <tr>
+                        <td style="font-weight:bold; width: 20%">{{ food.name }}</td>
+                        <td class="text-center">{{ food.calories }}</td>
+                        <td class="text-center">{{ food.protein }}</td>
+                        <td class="text-center">{{ food.fat }}</td>
+                        <td class="text-center">{{ food.carbs }}</td>
+                        <td class="text-center">{{ food.calcium }}</td>
+                        <td class="text-center">{{ food.copper }}</td>
+                        <td class="text-center">{{ food.iron }}</td>
+                        <td class="text-center">{{ food.magnesium }}</td>
+                        <td class="text-center">{{ food.manganese }}</td>
+                        <td class="text-center">{{ food.phosphorus }}</td>
+                        <td class="text-center">{{ food.potassium }}</td>
+                        <td class="text-center">{{ food.selenium }}</td>
+                        <td class="text-center">{{ food.zinc }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+    <form action="/nutrient_selector" method="POST">
+        <div align="center" class="pb-4">
+            <input type="submit" name="back" value="Back" id="back">
+        </div>
+    </form>
+    
+{% endblock %}

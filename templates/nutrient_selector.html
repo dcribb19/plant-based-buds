@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Nutrient Selector - Plant Based Buds</title>
+{% endblock %}
+
+{% block body %}
+    <h1>Select a nutrient to find great plant-based sources!</h1>
+    <form action="/nutrient_selector", method="POST">
+        <div align="center" style="display: flex; flex-direction: row; justify-content: center;">
+            <select name="macro" id="macro">
+                <option selected disabled hidden>Macronutrient</option>
+                {% for nutrient in nutrients['macro'] %}
+                <option value={{ nutrient }}>{{ nutrient }}</option>
+                {% endfor %}
+            </select>
+        
+            <select name="vitamin" id="vitamin">
+                <option selected disabled hidden>Vitamin</option>
+                {% for nutrient in nutrients['vitamins'] %}
+                <option value={{ nutrient }}>{{ nutrient }}</option>
+                {% endfor %}
+            </select>
+        
+            <select name="mineral" id="mineral">
+                <option selected disabled hidden>Mineral</option>
+                {% for nutrient in nutrients['minerals'] %}
+                <option value={{ nutrient }}>{{ nutrient }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <br><br>
+        <div align="center">
+        <input type="submit" name="learn more" value="Learn More" id="learn more">
+        <input type="submit" name="reset" value="Reset" id="reset">
+        </div>
+    </form>       
+    <br>
+
+    <footer>
+        All nutrient information was pulled from <a href="https://fdc.nal.usda.gov/">USDA FoodData Central</a>.<br>
+        All portions provided are based on 100g of the edible portion of the food.
+    </footer>
+{% endblock %}
